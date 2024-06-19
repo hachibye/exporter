@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  redis-exporter:
+    image: hachi4sre/redis_exporter:v1.6.0
+    ports:
+      - 9121:9121
+    # networks:
+    #   - public
+    command:
+      # - '--redis.addr=redis://redis-cluster:6379'
+      - '--redis.addr=<hostip:port>'
+      - '--redis.password=<pw>'
+      - '-web.listen-address=0.0.0.0:9121'
+
+  # prometheus:
+  #   volumes:
+  #     - ${PWD}/redis-server/redis.json:/etc/prometheus/targets/redis.json
+  #     - ${PWD}/redis-server/redis.rules:/etc/prometheus/redis.rules

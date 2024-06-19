@@ -1,0 +1,17 @@
+version: '2'
+services:
+  elasticsearch-exporter:
+    image: docker.io/bitnami/elasticsearch-exporter:1
+    restart: always
+    command:
+     - '--es.uri=http://<id>:<pw>@<hostip:port>'
+     - '--es.all'
+     - '--es.indices'
+     - '--es.indices_settings'
+     - '--es.indices_mappings'
+     - '--es.shards'
+     - '--es.data_stream'
+     - '--es.timeout=30s' 
+     #- '--es.ssl-skip-verify'
+    ports:
+     - "9114:9114"
